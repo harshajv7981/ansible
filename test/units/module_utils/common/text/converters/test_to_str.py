@@ -65,6 +65,12 @@ def test_to_native(in_string, encoding, expected):
     assert to_native(in_string, encoding) == expected
 
 
+@pytest.mark.parametrize('obj', [ValueError(u'\N{EURO SIGN}'), [u'\N{EURO SIGN}']])
+def test_to_bytes_nonstring_unencodable(obj):
+    """the default error handler must not traceback for nonstrings either"""
+    assert to_bytes(obj, 'latin-1') == to_bytes(str(obj), 'latin-1')
+
+
 def test_type_hints() -> None:
     """This test isn't really here to test the functionality of to_text/to_bytes
     but more to ensure the overloads are properly validated for type hinting

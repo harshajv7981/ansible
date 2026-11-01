@@ -1,0 +1,2 @@
+bugfixes:
+  - to_bytes - non-string objects whose string form can't be encoded no longer raise ``UnicodeEncodeError`` with the default ``surrogate_then_replace`` error handler; they are replaced like text strings are.

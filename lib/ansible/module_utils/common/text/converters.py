@@ -182,7 +182,7 @@ def to_bytes(
     else:
         raise TypeError('Invalid value %s for to_bytes\' nonstring parameter' % nonstring)
 
-    return to_bytes(value, encoding=encoding, errors=errors)
+    return to_bytes(value, encoding=encoding, errors=original_errors)
 
 
 @_t.overload
